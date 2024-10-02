@@ -1,3 +1,3 @@
-r=eval(input("Enter the Radius of circle:"))
-print(f"Area of Circle is {(3.14)*r*r}\nCircumference of Circle is {2*(3.14)*r}")
-
+r=eval((input("Enter the radius of circle :")))
+print(f"Area of circle is {3.14*r*r}")
+print(f"Perimeter of circle is {2*3.14*r}")

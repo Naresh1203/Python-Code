@@ -1,0 +1,49 @@
+>>> from sympy import *
+>>> A=Matrix([[2,3,4],[-1,2,3],[0,1,1]])
+>>> B=Matrix([6,9,1])
+
+Inverse Method
+
+>>> X=A.inv()*B
+>>> X
+Matrix([
+[ -4/3],
+[-14/3],
+[ 17/3]])
+
+Using Linsolve method
+
+>>> linsolve((A,B))
+{(-4/3, -14/3, 17/3)}
+
+Using Gauss Jordan Method
+>>> x,y,z=symbols("x,y,z")
+>>> A.gauss_jordan_solve(B,[x,y,z])
+(Matrix([
+[ -4/3],
+[-14/3],
+[ 17/3]]), Matrix(0, 1, []), [])
+
+Using LUD(Lower Upper Decompositon) Method
+
+Two ways to define augmented Matrix
+1
+>>> C1=Matrix([[2,3,4,6],[-1,2,3,9],[0,1,1,1]])
+>>> C1
+Matrix([
+[ 2, 3, 4, 6],
+[-1, 2, 3, 9],
+[ 0, 1, 1, 1]])
+
+2
+>>> C2=A.col_insert(3,B)
+>>> C2
+Matrix([
+[ 2, 3, 4, 6],
+[-1, 2, 3, 9],
+[ 0, 1, 1, 1]])
+>>> from sympy.abc import x,y,z
+>>> solve_linear_system_LU(C2,[x,y,z])
+{x: -4/3, y: -14/3, z: 17/3}
+
+
